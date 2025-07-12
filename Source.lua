@@ -13,9 +13,9 @@ local UserInputService = game:GetService("UserInputService")
 -- Ícone flutuante
 local icon = Instance.new("ImageLabel")
 icon.Name = "AzureFloatIcon"
-icon.Image = "rbxassetid://13885949520" -- Exemplo: ícone azul, troque pelo seu!
+icon.Image = "rbxassetid://6031068424" -- Ícone público, troque se quiser!
 icon.Size = UDim2.new(0,48,0,48)
-icon.Position = UDim2.new(0,20,0,120)
+icon.Position = UDim2.new(0,50,0,120)
 icon.BackgroundTransparency = 1
 icon.Parent = LocalPlayer:WaitForChild("PlayerGui")
 icon.AnchorPoint = Vector2.new(0.5,0.5)
@@ -32,7 +32,7 @@ RunService.RenderStepped:Connect(function()
         y = y - 0.5
         if y < 110 then up = true end
     end
-    icon.Position = UDim2.new(0,20,0,y)
+    icon.Position = UDim2.new(0,50,0,y)
 end)
 
 -- GUI principal (oculta inicialmente)
@@ -136,7 +136,7 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
--- Exemplo de teleporte rápido
+-- Teleporte rápido
 MakeButton("Teleport Starter Island", 96, function()
     LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1050, 15, 1200)
 end)
@@ -149,7 +149,7 @@ MakeButton("Auto Stat: Melee", 192, function()
     print("Distribuindo pontos em Melee!")
 end)
 
--- Dica de mobile: GUI arrastável
+-- GUI arrastável (mobile friendly)
 main.Active = true
 main.Draggable = true
 
