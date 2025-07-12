@@ -1,336 +1,220 @@
---[[
-  Blox Fruits Mobile - Auto Farm & ESP Script (GUI + Floating Icon)
-  Features:
-    - Floating GUI Icon (no image) to open menu
-    - Auto Farm Level: auto quest, auto kill NPC for your level, auto equip selected weapon
-    - ESP Fruits on map
-    - ESP Players (orange box, tracers, name above box)
-    - Spinner (dropdown) to select weapon type: Melee, Sword, Gun, Blox Fruit
-  Mobile compatible. Works locally (load from file or executor).
-  NOTE: This script is for educational purposes. Use at your own risk.
---]]
+--[[ 
+    Blox Fruits Mobile Farm GUI Script
+    Feito por: LeoScripter (Exemplo Educacional)
+]]
 
-if not game:IsLoaded() then game.Loaded:Wait() end
-
---[[ Services ]]
 local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Workspace = game:GetService("Workspace")
-local HttpService = game:GetService("HttpService")
-local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local Camera = workspace.CurrentCamera
 
---[[ GUI Creation ]]
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "BF_AutoFarmGUI"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = game.CoreGui or LocalPlayer:WaitForChild("PlayerGui")
+-- Função para criar GUI flutuante com ícone
+local function createFloatingIcon()
+    local ScreenGui = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
+    ScreenGui.Name = "BFarmGUI"
+    local IconBtn = Instance.new("ImageButton", ScreenGui)
+    IconBtn.Name = "FloatingIcon"
+    IconBtn.Image = "rbxassetid://6031094678" -- Ícone padrão Roblox
+    IconBtn.Size = UDim2.new(0, 64, 0, 64)
+    IconBtn.Position = UDim2.new(0.9, -32, 0.1, 0)
+    IconBtn.BackgroundTransparency = 1
 
--- Floating Icon
-local IconBtn = Instance.new("TextButton")
-IconBtn.Size = UDim2.new(0, 50, 0, 50)
-IconBtn.Position = UDim2.new(0, 10, 0.5, -25)
-IconBtn.Text = "≡"
-IconBtn.TextSize = 32
-IconBtn.BackgroundColor3 = Color3.fromRGB(255, 136, 0)
-IconBtn.TextColor3 = Color3.new(1,1,1)
-IconBtn.BorderSizePixel = 0
-IconBtn.Draggable = true
-IconBtn.Name = "FloatingIcon"
-IconBtn.Parent = ScreenGui
+    -- Adiciona spinner para arma
+    local WeaponLabel = Instance.new("TextLabel", ScreenGui)
+    WeaponLabel.Size = UDim2.new(0, 120, 0, 30)
+    WeaponLabel.Position = UDim2.new(0.9, -60, 0.18, 0)
+    WeaponLabel.Text = "Arma do Farm:"
+    WeaponLabel.BackgroundTransparency = 1
+    WeaponLabel.TextColor3 = Color3.new(1,1,1)
+    local WeaponSpinner = Instance.new("TextButton", ScreenGui)
+    WeaponSpinner.Size = UDim2.new(0, 120, 0, 30)
+    WeaponSpinner.Position = UDim2.new(0.9, -60, 0.22, 0)
+    WeaponSpinner.Text = "Melee"
+    WeaponSpinner.BackgroundColor3 = Color3.fromRGB(25,25,25)
+    WeaponSpinner.TextColor3 = Color3.new(1,1,1)
+    local weaponList = {"Melee", "Sword", "Gun", "Blox Fruit"}
+    local weaponIndex = 1
+    WeaponSpinner.MouseButton1Click:Connect(function()
+        weaponIndex = weaponIndex % #weaponList + 1
+        WeaponSpinner.Text = weaponList[weaponIndex]
+    end)
 
--- Main Frame
-local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 270, 0, 320)
-MainFrame.Position = UDim2.new(0, 70, 0.5, -160)
-MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-MainFrame.BorderSizePixel = 0
-MainFrame.Visible = false
-MainFrame.Parent = ScreenGui
+    -- Spinner para ilha
+    local IslandLabel = Instance.new("TextLabel", ScreenGui)
+    IslandLabel.Size = UDim2.new(0, 120, 0, 30)
+    IslandLabel.Position = UDim2.new(0.9, -60, 0.28, 0)
+    IslandLabel.Text = "Ilha:"
+    IslandLabel.BackgroundTransparency = 1
+    IslandLabel.TextColor3 = Color3.new(1,1,1)
+    local IslandSpinner = Instance.new("TextButton", ScreenGui)
+    IslandSpinner.Size = UDim2.new(0, 120, 0, 30)
+    IslandSpinner.Position = UDim2.new(0.9, -60, 0.32, 0)
+    IslandSpinner.Text = "Starter Island"
+    IslandSpinner.BackgroundColor3 = Color3.fromRGB(25,25,25)
+    IslandSpinner.TextColor3 = Color3.new(1,1,1)
+    local islandList = {"Starter Island", "Pirate Village", "Marine Fortress", "Skylands", "Colosseum", "Magma Village"}
+    local islandIndex = 1
+    IslandSpinner.MouseButton1Click:Connect(function()
+        islandIndex = islandIndex % #islandList + 1
+        IslandSpinner.Text = islandList[islandIndex]
+    end)
 
-local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 40)
-Title.BackgroundTransparency = 1
-Title.Font = Enum.Font.GothamBold
-Title.TextSize = 24
-Title.Text = "Blox Fruits Mobile"
-Title.TextColor3 = Color3.fromRGB(255, 136, 0)
-Title.Parent = MainFrame
+    -- Botão para teleportar
+    local TeleportBtn = Instance.new("TextButton", ScreenGui)
+    TeleportBtn.Size = UDim2.new(0, 120, 0, 30)
+    TeleportBtn.Position = UDim2.new(0.9, -60, 0.38, 0)
+    TeleportBtn.Text = "Teleportar"
+    TeleportBtn.BackgroundColor3 = Color3.fromRGB(25,90,25)
+    TeleportBtn.TextColor3 = Color3.new(1,1,1)
+    TeleportBtn.MouseButton1Click:Connect(function()
+        teleportToIsland(islandList[islandIndex])
+    end)
 
-local WeaponLabel = Instance.new("TextLabel")
-WeaponLabel.Size = UDim2.new(0, 120, 0, 30)
-WeaponLabel.Position = UDim2.new(0, 10, 0, 55)
-WeaponLabel.BackgroundTransparency = 1
-WeaponLabel.Font = Enum.Font.Gotham
-WeaponLabel.Text = "Arma para Farm:"
-WeaponLabel.TextSize = 17
-WeaponLabel.TextColor3 = Color3.new(1,1,1)
-WeaponLabel.Parent = MainFrame
+    -- Botão para trocar de mar
+    local SeaBtn = Instance.new("TextButton", ScreenGui)
+    SeaBtn.Size = UDim2.new(0, 120, 0, 30)
+    SeaBtn.Position = UDim2.new(0.9, -60, 0.44, 0)
+    SeaBtn.Text = "Trocar Mar"
+    SeaBtn.BackgroundColor3 = Color3.fromRGB(100,25,25)
+    SeaBtn.TextColor3 = Color3.new(1,1,1)
+    SeaBtn.MouseButton1Click:Connect(function()
+        changeSea()
+    end)
 
--- Spinner (Dropdown)
-local Spinner = Instance.new("TextButton")
-Spinner.Size = UDim2.new(0, 110, 0, 30)
-Spinner.Position = UDim2.new(0, 140, 0, 55)
-Spinner.BackgroundColor3 = Color3.fromRGB(40,40,40)
-Spinner.TextColor3 = Color3.new(1,1,1)
-Spinner.Font = Enum.Font.Gotham
-Spinner.TextSize = 16
-Spinner.Text = "Melee"
-Spinner.Name = "WeaponSpinner"
-Spinner.Parent = MainFrame
+    -- Botão AutoFarm
+    local FarmBtn = Instance.new("TextButton", ScreenGui)
+    FarmBtn.Size = UDim2.new(0, 120, 0, 30)
+    FarmBtn.Position = UDim2.new(0.9, -60, 0.50, 0)
+    FarmBtn.Text = "Auto Farm"
+    FarmBtn.BackgroundColor3 = Color3.fromRGB(25,25,90)
+    FarmBtn.TextColor3 = Color3.new(1,1,1)
+    FarmBtn.MouseButton1Click:Connect(function()
+        autoFarmLevel(weaponList[weaponIndex])
+    end)
 
-local WeaponOptions = {"Melee", "Sword", "Gun", "Blox Fruit"}
-local WeaponIndex = 1
+    -- ESP Frutas
+    fruitESP()
 
--- Toggle Buttons
-local function makeToggle(y, text)
-	local btn = Instance.new("TextButton")
-	btn.Size = UDim2.new(0.9, 0, 0, 28)
-	btn.Position = UDim2.new(0.05, 0, 0, y)
-	btn.BackgroundColor3 = Color3.fromRGB(40,40,40)
-	btn.TextColor3 = Color3.new(1,1,1)
-	btn.Font = Enum.Font.Gotham
-	btn.TextSize = 16
-	btn.Text = text.." [OFF]"
-	btn.Name = text
-	btn.Parent = MainFrame
-	return btn
+    -- ESP Jogadores
+    playerESP()
+
+    return ScreenGui
 end
 
-local AutoFarmBtn = makeToggle(100, "Auto Farm Level")
-local ESPFruitBtn = makeToggle(140, "ESP Frutas")
-local ESPPlayerBtn = makeToggle(180, "ESP Player")
-
---[[ Spinner Logic ]]
-Spinner.MouseButton1Click:Connect(function()
-	WeaponIndex = WeaponIndex % #WeaponOptions + 1
-	Spinner.Text = WeaponOptions[WeaponIndex]
-end)
-
---[[ Icon Logic ]]
-IconBtn.MouseButton1Click:Connect(function()
-	MainFrame.Visible = not MainFrame.Visible
-end)
-
---[[ Toggle Logic ]]
-local Enabled = {
-	AutoFarm = false,
-	ESPFruit = false,
-	ESPPlayer = false
-}
-AutoFarmBtn.MouseButton1Click:Connect(function()
-	Enabled.AutoFarm = not Enabled.AutoFarm
-	AutoFarmBtn.Text = "Auto Farm Level ["..(Enabled.AutoFarm and "ON" or "OFF").."]"
-end)
-ESPFruitBtn.MouseButton1Click:Connect(function()
-	Enabled.ESPFruit = not Enabled.ESPFruit
-	ESPFruitBtn.Text = "ESP Frutas ["..(Enabled.ESPFruit and "ON" or "OFF").."]"
-end)
-ESPPlayerBtn.MouseButton1Click:Connect(function()
-	Enabled.ESPPlayer = not Enabled.ESPPlayer
-	ESPPlayerBtn.Text = "ESP Player ["..(Enabled.ESPPlayer and "ON" or "OFF").."]"
-end)
-
---[[ Auto Farm Level ]]
-local function getQuestAndNPC()
-	-- Reference for main islands and levels
-	local level = LocalPlayer.Data.Level.Value
-	-- You can extend this table for more islands
-	local zones = {
-		{Min=1,Max=14, Quest="BanditQuest1", NPC="Bandit", Place="StarterIsland"},
-		{Min=15,Max=29, Quest="MonkeyQuest", NPC="Monkey", Place="Jungle"},
-		{Min=30,Max=39, Quest="BuggyQuest1", NPC="Pirate", Place="PirateIsland"},
-		-- ... Continue as needed
-	}
-	for _,zone in ipairs(zones) do
-		if level>=zone.Min and level<=zone.Max then
-			return zone.Quest, zone.NPC, zone.Place
-		end
-	end
-	-- fallback
-	return "BanditQuest1", "Bandit", "StarterIsland"
+-- Função de teleportar (exemplo)
+function teleportToIsland(islandName)
+    -- Encontre a posição da ilha (exemplo, personalize conforme o mapa)
+    local islands = {
+        ["Starter Island"] = Vector3.new(1077, 16, 1426),
+        ["Pirate Village"] = Vector3.new(-1125, 40, 3824),
+        ["Marine Fortress"] = Vector3.new(-4363, 195, 1602),
+        ["Skylands"] = Vector3.new(-4922, 717, -2624),
+        ["Colosseum"] = Vector3.new(-1836, 15, -2732),
+        ["Magma Village"] = Vector3.new(-5316, 78, 6009),
+    }
+    local pos = islands[islandName]
+    if pos then
+        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end
 end
 
-local function equipWeapon(selected)
-	local Backpack = LocalPlayer.Backpack
-	local Char = LocalPlayer.Character
-	for _,v in pairs(Backpack:GetChildren()) do
-		if selected == "Melee" and v:IsA("Tool") and v.ToolTip == "Melee" then v.Parent = Char
-		elseif selected == "Sword" and v:IsA("Tool") and v.ToolTip == "Sword" then v.Parent = Char
-		elseif selected == "Gun" and v:IsA("Tool") and v.ToolTip == "Gun" then v.Parent = Char
-		elseif selected == "Blox Fruit" and v:IsA("Tool") and v.ToolTip == "Blox Fruit" then v.Parent = Char
-		end
-	end
+-- Função para trocar entre mares (Sea 1, 2, 3)
+function changeSea()
+    local level = LocalPlayer.Data.Level.Value
+    local seaReqs = { -- Níveis mínimos por mar
+        [1] = 0,
+        [2] = 700,
+        [3] = 1500
+    }
+    local currentSea = workspace:FindFirstChild("Sea") and workspace.Sea.Value or 1
+    local nextSea = currentSea % 3 + 1
+    if level < seaReqs[nextSea] then
+        warn("Seu nível é insuficiente para ir ao Mar " .. nextSea)
+        -- Exibir erro na tela
+        local msg = Instance.new("TextLabel", LocalPlayer.PlayerGui.BFarmGUI)
+        msg.Text = "Erro: Nível insuficiente para o Mar " .. nextSea
+        msg.Size = UDim2.new(0, 200, 0, 40)
+        msg.Position = UDim2.new(0.9, -100, 0.56, 0)
+        msg.TextColor3 = Color3.new(1,0,0)
+        msg.BackgroundTransparency = 0.3
+        delay(3, function() msg:Destroy() end)
+        return
+    end
+    -- Simulação de teleporte entre mares (pode ser diferente no seu jogo)
+    LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0, 200, 0))
+    -- workspace.Sea.Value = nextSea -- No seu jogo pode precisar mudar algo aqui
 end
 
-local function AutoFarmLoop()
-	spawn(function()
-		while true do
-			RunService.RenderStepped:Wait()
-			if not Enabled.AutoFarm then continue end
-			local questName, npcName, place = getQuestAndNPC()
-			-- Accept Quest if not active
-			local hasQuest = LocalPlayer.PlayerGui:FindFirstChild("QuestContainer")
-			if not hasQuest or not hasQuest.Visible then
-				-- Find quest giver and fire prompt
-				for _,v in pairs(Workspace.NPCs:GetChildren()) do
-					if v.Name:find(questName) and v:FindFirstChild("Head") then
-						LocalPlayer.Character.HumanoidRootPart.CFrame = v.Head.CFrame + Vector3.new(0,2,0)
-						wait(1)
-						ReplicatedStorage.Remotes.Comm:InvokeServer("StartQuest", questName, 1)
-						break
-					end
-				end
-			end
-			-- Equip weapon
-			equipWeapon(WeaponOptions[WeaponIndex])
-			-- Find target NPCs
-			for _,v in pairs(Workspace.Enemies:GetChildren()) do
-				if v.Name == npcName and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-					repeat
-						RunService.RenderStepped:Wait()
-						if not Enabled.AutoFarm then break end
-						LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame + Vector3.new(0,5,0)
-						-- Attack
-						local tool = LocalPlayer.Character:FindFirstChildOfClass("Tool")
-						if tool then tool:Activate() end
-					until v.Humanoid.Health<=0 or not Enabled.AutoFarm
-				end
-			end
-		end
-	end)
+-- ESP Frutas
+function fruitESP()
+    for _,v in pairs(workspace:GetChildren()) do
+        if v:IsA("Tool") and v:FindFirstChild("Handle") and v.Name:match("Fruit") then
+            local Billboard = Instance.new("BillboardGui", v.Handle)
+            Billboard.Size = UDim2.new(0,100,0,40)
+            Billboard.AlwaysOnTop = true
+            Billboard.Adornee = v.Handle
+            local Txt = Instance.new("TextLabel", Billboard)
+            Txt.Size = UDim2.new(1,0,1,0)
+            Txt.BackgroundTransparency = 1
+            Txt.Text = "🍉 " .. v.Name
+            Txt.TextColor3 = Color3.new(1,1,0)
+            Txt.TextStrokeTransparency = 0.5
+        end
+    end
 end
 
---[[ ESP Fruits ]]
-local FruitESP_Boxes = {}
-local function ESPFruitLoop()
-	spawn(function()
-		while true do
-			wait(1)
-			if not Enabled.ESPFruit then
-				for _,b in pairs(FruitESP_Boxes) do b:Destroy() end
-				FruitESP_Boxes = {}
-				continue 
-			end
-			for _,obj in pairs(Workspace:GetChildren()) do
-				if obj:IsA("Tool") and obj.ToolTip == "Blox Fruit" and not FruitESP_Boxes[obj] then
-					local box = Instance.new("BillboardGui")
-					box.Adornee = obj.Handle
-					box.Size = UDim2.new(0, 80, 0, 20)
-					box.AlwaysOnTop = true
-					box.Parent = ScreenGui
-					local label = Instance.new("TextLabel", box)
-					label.Size = UDim2.new(1,0,1,0)
-					label.BackgroundTransparency = 1
-					label.Text = "🍏 "..obj.Name
-					label.TextColor3 = Color3.fromRGB(255, 136, 0)
-					label.TextScaled = true
-					FruitESP_Boxes[obj] = box
-				end
-			end
-			-- Remove missing fruits
-			for obj,box in pairs(FruitESP_Boxes) do
-				if not obj or not obj.Parent then box:Destroy() FruitESP_Boxes[obj]=nil end
-			end
-		end
-	end)
+-- ESP Jogadores
+function playerESP()
+    for _,plr in pairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChild("Head") then
+            local Billboard = Instance.new("BillboardGui", plr.Character.Head)
+            Billboard.Size = UDim2.new(0,100,0,40)
+            Billboard.AlwaysOnTop = true
+            Billboard.Adornee = plr.Character.Head
+            local Txt = Instance.new("TextLabel", Billboard)
+            Txt.Size = UDim2.new(1,0,1,0)
+            Txt.BackgroundTransparency = 1
+            Txt.Text = plr.Name
+            Txt.TextColor3 = Color3.new(0,1,1)
+            Txt.TextStrokeTransparency = 0.5
+        end
+    end
 end
 
---[[ ESP Player (Tracer, Box, Name) ]]
-local TracerFolder = Instance.new("Folder")
-TracerFolder.Name = "TracerFolder"
-TracerFolder.Parent = ScreenGui
-
-local function drawBox(plr)
-	local char = plr.Character
-	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
-	local box = Instance.new("BoxHandleAdornment")
-	box.Adornee = char:FindFirstChild("HumanoidRootPart")
-	box.Size = Vector3.new(4,7,3)
-	box.Color3 = Color3.fromRGB(255,136,0)
-	box.Transparency = 0.5
-	box.AlwaysOnTop = true
-	box.ZIndex = 10
-	box.Parent = TracerFolder
-	return box
-end
-local function drawTracer(plr)
-	local char = plr.Character
-	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
-	local line = Drawing.new("Line")
-	line.Color = Color3.fromRGB(255,136,0)
-	line.Thickness = 2
-	line.Transparency = 0.9
-	line.Visible = true
-	return line
-end
-local function drawName(plr)
-	local char = plr.Character
-	if not char or not char:FindFirstChild("Head") then return end
-	local gui = Instance.new("BillboardGui")
-	gui.Adornee = char.Head
-	gui.Size = UDim2.new(0,120,0,20)
-	gui.AlwaysOnTop = true
-	gui.Parent = TracerFolder
-	local label = Instance.new("TextLabel", gui)
-	label.Size = UDim2.new(1,0,1,0)
-	label.BackgroundTransparency = 1
-	label.Text = plr.Name
-	label.TextColor3 = Color3.fromRGB(255,136,0)
-	label.TextScaled = true
-	return gui
+-- Auto Farm Level (voando até o NPC, aceitando quest e matando)
+function autoFarmLevel(weaponType)
+    local level = LocalPlayer.Data.Level.Value
+    local npc, quest
+    -- Exemplo: busca NPC do seu level (simulação)
+    for _,v in pairs(workspace.Enemies:GetChildren()) do
+        if v:FindFirstChild("Humanoid") and v.Level.Value <= level then
+            npc = v
+            break
+        end
+    end
+    if not npc then
+        warn("Não há NPC disponível para seu level.")
+        return
+    end
+    -- Aceita quest (simulação)
+    local questGiver = workspace:FindFirstChild("QuestGivers") and workspace.QuestGivers:GetChildren()[1]
+    if questGiver then
+        -- Simula click no quest giver
+        fireclickdetector(questGiver.ClickDetector)
+    end
+    -- Voa até NPC
+    local hrp = LocalPlayer.Character.HumanoidRootPart
+    local tween = TweenService:Create(hrp, TweenInfo.new(2), {CFrame = npc.HumanoidRootPart.CFrame + Vector3.new(0,10,0)})
+    tween:Play()
+    tween.Completed:Wait()
+    -- Simula ataque automático até matar o NPC
+    while npc and npc.Humanoid.Health > 0 do
+        -- Simula clique/ataque (ajuste conforme sua arma)
+        ReplicatedStorage.Remotes.Combat:FireServer(weaponType, npc)
+        wait(0.2)
+    end
 end
 
-local ESPObjects = {}
-local function PlayerESP_Loop()
-	spawn(function()
-		while true do
-			RunService.RenderStepped:Wait()
-			if not Enabled.ESPPlayer then
-				for _,v in pairs(ESPObjects) do
-					if v.Box then v.Box:Destroy() end
-					if v.Tracer then v.Tracer:Remove() end
-					if v.Name then v.Name:Destroy() end
-				end
-				ESPObjects = {}
-				continue
-			end
-			for _,plr in pairs(Players:GetPlayers()) do
-				if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
-					if not ESPObjects[plr] then
-						ESPObjects[plr] = {
-							Box = drawBox(plr),
-							Tracer = drawTracer(plr),
-							Name = drawName(plr)
-						}
-					end
-					-- Update tracer position (Screen)
-					local root = plr.Character:FindFirstChild("HumanoidRootPart")
-					if ESPObjects[plr].Tracer and root then
-						local pos,vis = Workspace.CurrentCamera:WorldToViewportPoint(root.Position)
-						local myPos = Workspace.CurrentCamera.ViewportSize/2
-						ESPObjects[plr].Tracer.From = Vector2.new(myPos.X, Workspace.CurrentCamera.ViewportSize.Y)
-						ESPObjects[plr].Tracer.To = Vector2.new(pos.X, pos.Y)
-						ESPObjects[plr].Tracer.Visible = vis
-					end
-				end
-			end
-			-- Remove missing players
-			for plr,v in pairs(ESPObjects) do
-				if not plr or not plr.Character or not plr.Character.Parent then
-					if v.Box then v.Box:Destroy() end
-					if v.Tracer then v.Tracer:Remove() end
-					if v.Name then v.Name:Destroy() end
-					ESPObjects[plr]=nil
-				end
-			end
-		end
-	end)
-end
-
---[[ Start Loops ]]
-AutoFarmLoop()
-ESPFruitLoop()
-PlayerESP_Loop()
-
---[[ End ]]
+-- Inicializar GUI
+createFloatingIcon()
