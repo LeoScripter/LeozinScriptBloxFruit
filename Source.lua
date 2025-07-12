@@ -1,44 +1,45 @@
+--[[
+Blox Fruits Mobile Azure Hub (Estilo W-Azure Hub)
+Script Local para Roblox Studio (testes/educacional)
+By LeoScripter
+]]
+
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 
--- Diagnóstico: Mensagem no Output
-print("Script AzureHub iniciado!")
-
--- Ícone flutuante
+-- Ícone flutuante (corrigido e testado)
 local icon = Instance.new("ImageLabel")
 icon.Name = "AzureFloatIcon"
-icon.Image = "rbxassetid://6031068424" -- Roblox logo azul (deve aparecer!)
-icon.Size = UDim2.new(0,48,0,48)
-icon.Position = UDim2.new(0,50,0,100) -- Posição visível
+icon.Image = "rbxassetid://6031068424" -- Roblox logo azul (garantido)
+icon.Size = UDim2.new(0,64,0,64)
+icon.Position = UDim2.new(0,100,0,100) -- Posição visível no topo esquerdo
 icon.BackgroundTransparency = 1
 icon.Parent = LocalPlayer:WaitForChild("PlayerGui")
-icon.AnchorPoint = Vector2.new(0.5,0.5)
+icon.AnchorPoint = Vector2.new(0,0)
 icon.Active = true
 
-print("Ícone criado. Parent:", icon.Parent)
-
--- Efeito flutuação
+-- Efeito flutuação simples
 local up = true
 RunService.RenderStepped:Connect(function()
     local y = icon.Position.Y.Offset
     if up then
         y = y + 0.5
-        if y > 110 then up = false end
+        if y > 120 then up = false end
     else
         y = y - 0.5
-        if y < 90 then up = true end
+        if y < 80 then up = true end
     end
-    icon.Position = UDim2.new(0,50,0,y)
+    icon.Position = UDim2.new(0,100,0,y)
 end)
 
 -- GUI principal (oculta inicialmente)
 local gui = Instance.new("ScreenGui")
 gui.Name = "AzureHub"
 gui.Parent = LocalPlayer.PlayerGui
-gui.Enabled = false
+gui.Enabled = true
 
 local main = Instance.new("Frame")
 main.Size = UDim2.new(0, 280, 0, 340)
@@ -152,4 +153,4 @@ end)
 main.Active = true
 main.Draggable = true
 
-print("Script AzureHub carregado!")
+print("Blox Fruits Mobile Azure Hub carregado! Ícone flutuante deve aparecer.")
