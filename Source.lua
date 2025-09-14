@@ -1972,4 +1972,1180 @@ spawn(function()
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
-                    Noclip.Par…"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+            end
+        end
+    end)
+end)
+
+spawn(function()
+    pcall(function()
+        game:GetService("RunService").Stepped:Connect(function()
+            if _G.AutoVampire or AutoFarmChest or _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.TeleportNPC or _G.AutoKai or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or _G.Namfon or _G.AutoSwordMastery or _G.Auto_Seabest or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.TPB or _G.Farmfast or _G.AutoRace or _G.RaidPirate == true then
+                for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false    
+                    end
+                end
+            end
+        end)
+    end)
+end)
+
+function InstancePos(pos)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end
+
+function TP3(pos)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end
+
+spawn(function()
+    while wait() do
+        if _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFarmBossHallow or _G.AutoFactory or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.d or _G.Autowaden or _G.Autogay or _G.AutoObservationHakiV2 or _G.AutoFarmMaterial or _G.AutoFarmNearest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoRaidPirate or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or _G.AttackDummy or _G.AutoSwordMastery or _G.Auto_Seabest or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Farmfast or _G.RaidPirate == true then
+            pcall(function()
+                game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("Ken",true)
+            end)
+        end    
+    end
+end)
+
+spawn(function()
+game:GetService("RunService").RenderStepped:Connect(function()
+    if _G.AutoClick or Fastattack then
+         pcall(function()
+            game:GetService'VirtualUser':CaptureController()
+            game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+        end)
+    end
+end)
+end)
+
+function StopTween(target)
+    if not target then
+        _G.StopTween = true
+        wait()
+        topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+        wait()
+        if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+        end
+        _G.StopTween = false
+        _G.Clip = false
+    end
+end
+
+spawn(function()
+    pcall(function()
+        while wait() do
+            for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do  
+                if v:IsA("Tool") then
+                    if v:FindFirstChild("RemoteFunctionShoot") then 
+                        SelectWeaponGun = v.Name
+                    end
+                end
+            end
+        end
+    end)
+end)
+
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+function CheckItem(ah)
+    for k, v in pairs(game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("getInventory")) do
+        if v.Name == ah then
+            return v
+        end
+    end
+end
+
+function CheckSea(e)
+    if game.PlaceId == 2753915549 then
+        if e == 1 then
+            return true
+        end
+    elseif game.PlaceId == 4442272183 then
+        if e == 2 then
+            return true
+        end
+    elseif game.PlaceId == 7449423635 then
+        if e == 3 then
+            return true
+        end
+    end
+    return false
+end
+w = task.wait
+t = task
+
+TempleOfTimeCFrame =
+CFrame.new(
+28734.3945,
+14888.2324,
+-109.071777,
+-0.650207579,
+4.1780531e-08,
+-0.759756625,
+1.97876595e-08,
+1,
+3.80575109e-08,
+0.759756625,
+9.71147784e-09,
+-0.650207579
+)
+
+spawn(
+        function()
+            while task.wait() do
+                if _G.AutoDooHee then
+                    MoveCamtoMoon()
+                end
+            end
+        end
+    )
+    Memayto = false
+    DaGatCan = false
+    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then
+        DaGatCan = true
+    end
+    function PullLever()
+        local bn =
+            CFrame.new(
+            28576.4688,
+            14939.2832,
+            76.5164413,
+            -1,
+            0,
+            0,
+            0,
+            0.707134247,
+            -0.707079291,
+            -0,
+            -0.707079291,
+            -0.707134247
+        )
+        local bo =
+            CFrame.new(
+            28576.4688,
+            14935.9512,
+            75.469101,
+            -1,
+            -4.22219593e-08,
+            1.13133396e-08,
+            0,
+            -0.258819044,
+            -0.965925813,
+            4.37113883e-08,
+            -0.965925813,
+            0.258819044
+        )
+        local bp = 0.2
+        if
+            game:GetService("Workspace").Map["Temple of Time"].Lever.Lever.CFrame.Z > bo.Z + bp or
+                game:GetService("Workspace").Map["Temple of Time"].Lever.Lever.CFrame.Z < bo.Z - bp
+         then
+            CheckAndTweenTemple()
+            topos(game:GetService("Workspace").Map["Temple of Time"].Lever.Part.CFrame)
+            for r, v in pairs(game:GetService("Workspace").Map["Temple of Time"].Lever:GetDescendants()) do
+                if v.Name == "ProximityPrompt" then
+                    fireproximityprompt(v)
+                end
+            end
+        end
+    end
+	function IsMirageIsland2()
+		if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+			return true
+		else
+			return false
+		end
+	end
+	function TweenTemple()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+			"requestEntrance",
+			Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)
+		)
+	end
+function TweenTempleLegit()
+		AllNPCS = getnilinstances()
+		for r, v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+			table.insert(AllNPCS, v)
+		end
+		for r, v in pairs(AllNPCS) do
+			if v.Name == "Mysterious Force" then
+				TempleMysteriousNPC1 = v
+			end
+			if v.Name == "Mysterious Force3" then
+				TempleMysteriousNPC2 = v
+			end
+		end
+		topos(TempleMysteriousNPC2.HumanoidRootPart.CFrame)
+		wait(0.5)
+		if
+			(TempleMysteriousNPC2.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
+				15
+		 then
+			game.ReplicatedStorage.Remotes.CommF_:InvokeServer("RaceV4Progress", "TeleportBack")
+		end
+		if
+			(TempleMysteriousNPC1.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <
+				15
+		 then
+			game.ReplicatedStorage.Remotes.CommF_:InvokeServer("RaceV4Progress", "Teleport")
+         end
+	end
+	function CheckAndTweenTemple()
+		if (TempleOfTimeCFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1200 then
+			TweenTemple()
+		end
+		if (TempleOfTimeCFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1200 then
+			TweenTemple()
+		end
+	end
+    function MoonTextureId()
+        if Sea1 then
+            return game:GetService("Lighting").FantasySky.MoonTextureId
+        elseif Sea2 then
+            return game:GetService("Lighting").FantasySky.MoonTextureId
+        elseif Sea3 then
+            return game:GetService("Lighting").Sky.MoonTextureId
+        end
+    end
+	function CheckMoon()
+		moon8 = "http://www.roblox.com/asset/?id=9709150401"
+		moon7 = "http://www.roblox.com/asset/?id=9709150086"
+		moon6 = "http://www.roblox.com/asset/?id=9709149680"
+		moon5 = "http://www.roblox.com/asset/?id=9709149431"
+		moon4 = "http://www.roblox.com/asset/?id=9709149052"
+		moon3 = "http://www.roblox.com/asset/?id=9709143733"
+		moon2 = "http://www.roblox.com/asset/?id=9709139597"
+		moon1 = "http://www.roblox.com/asset/?id=9709135895"
+		moonreal = MoonTextureId()
+		cofullmoonkothangbeo = "Bad Moon"
+		if moonreal == moon5 or moonreal == moon4 then
+			if moonreal == moon5 then
+				cofullmoonkothangbeo = "Full Moon"
+			elseif moonreal == moon4 then
+				cofullmoonkothangbeo = "Next Night"
+			end
+		end
+		return cofullmoonkothangbeo
+	end
+	function getBlueGear()
+		if game.workspace.Map:FindFirstChild("MysticIsland") then
+			for r, v in pairs(game.workspace.Map.MysticIsland:GetChildren()) do
+				if v:IsA("MeshPart") and v.MeshId == "rbxassetid://10153114969" then
+					return v
+				end
+			end
+		end
+	end
+	function getHighestPoint()
+		if not game.workspace.Map:FindFirstChild("MysticIsland") then
+			return nil
+		end
+		for r, v in pairs(game:GetService("Workspace").Map.MysticIsland:GetDescendants()) do
+			if v:IsA("MeshPart") then
+				if v.MeshId == "rbxassetid://6745037796" then
+					return v
+				end
+			end
+		end
+	end
+	spawn(function()
+        if TwenetoHighestPoint then
+		HighestPoint = getHighestPoint()
+		if HighestPoint then
+			topos(HighestPoint.CFrame * CFrame.new(0, 211.88, 0))
+		end
+    end
+	end)
+	function MoveCamtoMoon()
+		workspace.CurrentCamera.CFrame =
+			CFrame.new(
+			workspace.CurrentCamera.CFrame.Position,
+			game:GetService("Lighting"):GetMoonDirection() + workspace.CurrentCamera.CFrame.Position
+		)
+	end
+
+	spawn(function()
+    if TweentoBlueGear then
+		BlueGear = getBlueGear()
+		if BlueGear then
+			topos(BlueGear.CFrame)
+		end
+    end
+	end)
+
+    local Client = game.Players.LocalPlayer
+    local STOP = require(Client.PlayerScripts.CombatFramework.Particle)
+    local STOPRL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
+    spawn(function()
+        while task.wait() do
+            pcall(function()
+                if not shared.orl then shared.orl = STOPRL.wrapAttackAnimationAsync end
+                if not shared.cpc then shared.cpc = STOP.play end
+                    STOPRL.wrapAttackAnimationAsync = function(a,b,c,d,func)
+                    local Hits = STOPRL.getBladeHits(b,c,d)
+                    if Hits then
+                        if _G.FastAttack then
+                            STOP.play = function() end
+                            a:Play(0.01,0.01,0.01)
+                            func(Hits)
+                            STOP.play = shared.cpc
+                            wait(a.length * 0.5)
+                            a:Stop()
+                        else
+                            a:Play()
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+
+function GetBladeHit()
+    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+    local CmrFwLib = CombatFrameworkLib[2]
+    local p13 = CmrFwLib.activeController
+    local weapon = p13.blades[1]
+    if not weapon then 
+        return weapon
+    end
+    while weapon.Parent ~= game.Players.LocalPlayer.Character do
+        weapon = weapon.Parent 
+    end
+    return weapon
+end
+function AttackHit()
+    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+    local CmrFwLib = CombatFrameworkLib[2]
+    local plr = game.Players.LocalPlayer
+    for i = 1, 1 do
+        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(plr.Character,{plr.Character.HumanoidRootPart},60)
+        local cac = {}
+        local hash = {}
+        for k, v in pairs(bladehit) do
+            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                table.insert(cac, v.Parent.HumanoidRootPart)
+                hash[v.Parent] = true
+            end
+        end
+        bladehit = cac
+        if #bladehit > 0 then
+            pcall(function()
+                CmrFwLib.activeController.timeToNextAttack = 1
+                CmrFwLib.activeController.attacking = false
+                CmrFwLib.activeController.blocking = false
+                CmrFwLib.activeController.timeToNextBlock = 0
+                CmrFwLib.activeController.increment = 3
+                CmrFwLib.activeController.hitboxMagnitude = 120
+                CmrFwLib.activeController.focusStart = 0
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetBladeHit()))
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
+            end)
+        end
+    end
+end
+spawn(function()
+    while wait(.1) do
+        if _G.FastAttack then
+            pcall(function()
+                repeat task.wait(_G.FastAttackDelay)
+                    AttackHit()
+                until not _G.FastAttack
+            end)
+        end
+    end
+end)
+
+local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
+CamShake:Stop()
+
+    HttpService = game:GetService("HttpService")
+    local i = "Cleiton Hub"
+    local j = "-BloxFruit.json"
+    local l = game.Players.LocalPlayer.Name .. j
+    if Adel then
+        HttpService = game:GetService("HttpService")
+        local i = "Cleiton Hub"
+        local j = "-BloxFruit.json"
+        local l = game.Players.LocalPlayer.Name .. j
+    end
+    function SaveSettings(m, n)
+        if m ~= nil then
+            h[m] = n
+        end
+        HttpService = game:GetService("HttpService")
+        if not isfolder(i) then
+            makefolder(i)
+        end
+        writefile(i .. "/" .. l, HttpService:JSONEncode(h))
+    end
+    function ReadSetting()
+        local s, o =
+            pcall(
+            function()
+                HttpService = game:GetService("HttpService")
+                if not isfolder(i) then
+                    makefolder(i)
+                end
+                return HttpService:JSONDecode(readfile(i .. "/" .. l))
+            end
+        )
+        if s then
+            return o
+        else
+            SaveSettings()
+            return ReadSetting()
+        end
+    end
+
+    function MoonTextureId()
+        if Sea1 then
+            return game:GetService("Lighting").FantasySky.MoonTextureId
+        elseif Sea2 then
+            return game:GetService("Lighting").FantasySky.MoonTextureId
+        elseif Sea3 then
+            return game:GetService("Lighting").Sky.MoonTextureId
+        end
+    end
+
+    function CheckMoon()
+        moon8 = "http://www.roblox.com/asset/?id=9709150401"
+        moon7 = "http://www.roblox.com/asset/?id=9709150086"
+        moon6 = "http://www.roblox.com/asset/?id=9709149680"
+        moon5 = "http://www.roblox.com/asset/?id=9709149431"
+        moon4 = "http://www.roblox.com/asset/?id=9709149052"
+        moon3 = "http://www.roblox.com/asset/?id=9709143733"
+        moon2 = "http://www.roblox.com/asset/?id=9709139597"
+        moon1 = "http://www.roblox.com/asset/?id=9709135895"
+        moonreal = MoonTextureId()
+        cofullmoonkothangbeo = "Bad Moon"
+        if moonreal == moon5 or moonreal == moon4 then
+            if moonreal == moon5 then
+                cofullmoonkothangbeo = "Full Moon"
+            elseif moonreal == moon4 then
+                cofullmoonkothangbeo = "Next Night"
+            end
+        end
+        return cofullmoonkothangbeo
+    end
+
+    function function7()
+        GameTime = "Error"
+        local c = game.Lighting
+        local ao = c.ClockTime
+        if ao >= 18 or ao < 5 then
+            GameTime = "Night"
+        else
+            GameTime = "Day"
+        end
+        return GameTime
+    end
+    function function6()
+        return math.floor(game.Lighting.ClockTime)
+    end
+    function getServerTime()
+        RealTime = tostring(math.floor(game.Lighting.ClockTime * 100) / 100)
+        RealTime = tostring(game.Lighting.ClockTime)
+        RealTimeTable = RealTime:split(".")
+        Minute, Second = RealTimeTable[1], tonumber(0 + tonumber(RealTimeTable[2] / 100)) * 60
+        return Minute, Second
+    end
+    function function8()
+        local c = game.Lighting
+        local ao = c.ClockTime
+        if CheckMoon() == "Full Moon" and ao <= 5 then
+            return tostring(function6()) .. " ( Will End Moon In " .. math.floor(5 - ao) .. " Minutes )"
+        elseif CheckMoon() == "Full Moon" and (ao > 5 and ao < 12) then
+            return tostring(function6()) .. " ( Fake Moon )"
+        elseif CheckMoon() == "Full Moon" and (ao > 12 and ao < 18) then
+            return tostring(function6()) .. " ( Will Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        elseif CheckMoon() == "Full Moon" and (ao > 18 and ao <= 24) then
+            return tostring(function6()) .. " ( Will End Moon In " .. math.floor(24 + 6 - ao) .. " Minutes )"
+        end
+        if CheckMoon() == "Next Night" and ao < 12 then
+            return tostring(function6()) .. " ( Will Full Moon In " .. math.floor(18 - ao) .. " Minutes )"
+        elseif CheckMoon() == "Next Night" and ao > 12 then
+            return tostring(function6()) .. " ( Will Full Moon In " .. math.floor(18 + 12 - ao) .. " Minutes )"
+        end
+        return tostring(function6())
+    end
+
+    function CheckAcientOneStatus()
+        if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+            return "You have yet to achieve greatness"
+        end
+        local v227 = nil
+        local v228 = nil
+        local v229 = nil
+        v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
+        if v229 == 1 then
+            return "Required Train More"
+        elseif v229 == 2 or v229 == 4 or v229 == 7 then
+            return "Can Buy Gear With " .. v227 .. " Fragments"
+        elseif v229 == 3 then
+            return "Required Train More"
+        elseif v229 == 5 then
+            return "You Are Done Your Race."
+        elseif v229 == 6 then
+            return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
+        end
+        if v229 ~= 8 then
+            if v229 == 0 then
+                return "Ready For Trial"
+            else
+                return "You have yet to achieve greatness"
+            end
+        end
+        return "Remaining " .. 10 - v228 .. " training sessions."
+    end
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Sla Hub", HidePremium = false, IntroText = "", SaveConfig = true, ConfigFolder = "Sla Hub"})
+
+OrionLib:MakeNotification({
+	Name = "Sla Hub",
+	Content = "Choose Teams Bro?",
+	Image = "rbxassetid://119980140458596",
+	Time = 7
+})
+
+OrionLib:MakeNotification({
+	Name = "Cleiton Hub",
+	Content = "Cleiton Hub",
+	Image = "rbxassetid://119980140458596",
+	Time = 25
+})
+
+OrionLib:MakeNotification({
+    Name = "Cleiton Hub",
+    Content = "Script Carregando...,Não ative nenhuma função.",
+    Image = "rbxassetid://119980140458596",
+    Time = 5
+})
+
+-------------Tab-----------------------
+
+local W = Window:MakeTab({
+    Name = "Welcome",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local M = Window:MakeTab({
+    Name = "General",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local ST = Window:MakeTab({
+    Name = "Setting",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local IQ = Window:MakeTab({
+    Name = "Item & Quest",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local S = Window:MakeTab({
+    Name = "Stats",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local E = Window:MakeTab({
+    Name = "ESP",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local RA = Window:MakeTab({
+    Name = "Raid",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local LC = Window:MakeTab({
+    Name = "Local Players",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local Wld = Window:MakeTab({
+    Name = "World Teleport",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local SV = Window:MakeTab({
+    Name = "Status Sever",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local D = Window:MakeTab({
+    Name = "Devil Fruit",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local R = Window:MakeTab({
+    Name = "Race V4",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local SH = Window:MakeTab({
+    Name = "Shop",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+local C = Window:MakeTab({
+    Name = "Misc",
+    Icon = "rbxassetid://119980140458596",
+    PremiumOnly = false
+})
+
+-----Label--------------------
+local Section = W:AddSection({
+    Name = "Update"
+})
+
+W:AddLabel("[+] Cleiton Hub is HERE!")
+W:AddLabel("[+] Best AutoFarm!")
+W:AddLabel("[+] Up and Growing")
+W:AddLabel("[+] Smooth")
+W:AddLabel("[+] Special thanks to @Tsuoscripts.")
+
+local Section = W:AddSection({
+    Name = "Status"
+})
+
+local locallv = W:AddLabel("Level")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                locallv:Set("Level :".." "..game:GetService("Players").LocalPlayer.Data.Level.Value)
+            end)
+        end
+    end)
+    
+    local localrace = W:AddLabel("Race")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localrace:Set("Race :".." "..game:GetService("Players").LocalPlayer.Data.Race.Value)
+            end)
+        end
+    end)
+    
+    local localbeli = W:AddLabel("Beli")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localbeli:Set("Beli :".." "..game:GetService("Players").LocalPlayer.Data.Beli.Value)
+            end)
+        end
+    end)
+    local localfrag = W:AddLabel("Fragment")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localfrag:Set("Fragments :".." "..game:GetService("Players").LocalPlayer.Data.Fragments.Value)
+            end)
+        end
+    end)
+    
+    
+    local localexp = W:AddLabel("ExP")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localexp:Set("ExP Points :".." "..game:GetService("Players").LocalPlayer.Data.Exp.Value)
+            end)
+        end
+    end)
+    
+    local localstat = W:AddLabel("Stats Points")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localstat:Set("Stats Points :".." "..game:GetService("Players").LocalPlayer.Data.Points.Value)
+            end)
+        end
+    end)
+    
+    local localbountyhornor = W:AddLabel("Bounty")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                localbountyhornor:Set("Bounty / Honor :".." "..game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value)
+            end)
+        end
+    end)
+    
+    local localDevil = W:AddLabel("Devil Fruit")
+    
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value) then
+                    localDevil:Set("Devil Fruit :".." "..game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
+                else
+                    localDevil:Set("Not Have Devil Fruit")
+                end
+            end)
+        end
+    end)
+
+    local Section = W:AddSection({
+        Name = "Status Hack"
+    })
+    
+    local LevelFarmFarm W:AddLabel("Kaitun: Coming Soon")
+    W:AddLabel("Config Save : Comming Son...")
+    local Farmfast = W:AddLabel("Farm Fast : ❌")
+    local Bypass = W:AddLabel("Bypass ❌")
+    local Section = W:AddSection({
+        Name = "World"
+    })
+    local WolrdSet3 = W:AddLabel("World 1 ❌ ")
+    local WolrdSet = W:AddLabel("Wolrd : 2 ❌")
+    local WolrdSet1 = W:AddLabel("Wolrd : 3 ❌")
+    local Section = W:AddSection({
+        Name = "Stats Point"
+    })
+    local StastMelee = W:AddLabel("")
+    local StastDefense = W:AddLabel("")
+    local StastSword = W:AddLabel("")
+    local StastGun = W:AddLabel("")
+    local StastDevilFruit = W:AddLabel("")
+    local PointsStast = W:AddLabel("")
+    local Section = W:AddSection({
+        Name = "Melee Check"
+    })
+    local  Superhuman =             W:AddLabel("❌ : Superhuman")
+    local  DeathStep =              W:AddLabel("❌ : Sharkman Karate")
+    local  ElectricClaw =             W:AddLabel("❌ : Electric Claw")
+    local  DragonTalon =             W:AddLabel("❌ : Dragon Talon")
+    local   GodHuman =            W:AddLabel("❌ : God Human")
+    local Section = W:AddSection({
+        Name = "Sword Legend Check"
+    })
+    local   Shisui =            W:AddLabel("❌ : Shisui")
+    local     Saddi =           W:AddLabel("❌ : Saddi")
+    local      Wando =         W:AddLabel("❌ : Wando")
+    local     TrueTripleKatana          W:AddLabel("❌ : True Triple Katana")
+    local Section = W:AddSection({
+        Name = "World 1 Weapon"
+    })
+    local   Saber  = W:AddLabel("❌ : Saber")
+    local Section = W:AddSection({
+        Name = "World 2 Weapon"
+    })
+    local       Rengoku =         W:AddLabel("❌ : Rengoku")
+    local    MidnightBlade =            W:AddLabel("❌ : Midnight Blade")
+    local       DragonTrident =        W:AddLabel("❌ : DragonTrident")
+    local Section = W:AddSection({
+        Name = "World 3 Weapon"
+    })
+    local     Yama =          W:AddLabel("❌ : Yama")
+    local        BuddySword =        W:AddLabel("❌ : Buddy Sword")
+    local       Canvander =        W:AddLabel("❌ : Canvander")
+    local      TwinHooks =         W:AddLabel("❌ : Twin Hooks")
+    local     SpikeyTrident =          W:AddLabel("❌ : Spikey Trident")
+    local   HallowScythe =            W:AddLabel("❌ : Hallow Scythe")
+    local     DarkDagger =           W:AddLabel("❌ : Dark Dagger")
+    local     Tushita          W:AddLabel("❌ : Tushita")
+    local Section = W:AddSection({
+        Name = "Gun"
+    })
+    local   Kabucha =            W:AddLabel("❌ : Kabucha")
+    local   AcidumRifle =             W:AddLabel("❌ : Acidum Rifle")
+    local    BizarreRifle =            W:AddLabel("❌ : Bizarre Rifle")
+    local Section = W:AddSection({
+        Name = "Quest"
+    })
+    local   BartiloQuest =            W:AddLabel("❌ : Bartilo Quest")
+    local   DonSwanQuest =             W:AddLabel("❌ : Don Swan Quest")
+    local    KillDonSwan =           W:AddLabel("❌ : Kill Don Swan")
+
+
+local Section = W:AddSection({
+    Name = "Acessory"
+})
+
+
+local Dark_Coat = W:AddLabel("❌: Dark Coat")
+local Ghoul_Mask = W:AddLabel("❌: Ghoul Mask")
+local Swan_Glass = W:AddLabel("❌: Swan Glass")
+local Pale_Scarf = W:AddLabel("❌: Pale Scarf")
+local Valkyrie_Helm = W:AddLabel("❌: Valkyrie Helm")
+
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                if v.Name == "Saber" then
+                    Dark_Coat:Set("✅: Dark Coat")
+                end
+                if v.Name == "Ghoul Mask" then
+                    Ghoul_Mask:Set("✅: Ghoul Mask")
+                end
+                if v.Name == "Swan Glasses" then
+                    Swan_Glass:Set("✅: Swan Glass")
+                end
+                if v.Name == "Pale Scarf" then
+                    Pale_Scarf:Set("✅: Pale Scarf")
+                end
+                if v.Name == "Valkyrie Helmet" then
+                    Valkyrie_Helm:Set("✅: Valkyrie Helmet")
+                end
+            end
+        end)
+    end
+end)
+
+local Section = M:AddSection({
+    Name = "Select Weapon"
+})
+
+M:AddParagraph("Select Weapon","Please Select Weapon")
+
+local WeaponList = {"Melee","Sword","Fruit","Gun"}
+_G.SelectWeapon = "Melee"
+M:AddDropdown({
+    Name = "Select Weapon",
+    Default = "",
+    Options = WeaponList,
+    Flag = "Select Weapon",
+    Save = true,
+    Callback = function(Value)
+        _G.SelectWeapon = Value
+    end    
+})
+task.spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.SelectWeapon == "Melee" then
+                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Melee" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif _G.SelectWeapon == "Sword" then
+                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Sword" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif _G.SelectWeapon == "Gun" then
+                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Gun" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif _G.SelectWeapon == "Fruit" then
+                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Blox Fruit" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            end
+        end)
+    end
+    end)
+
+if World2 and World1 then
+    local Section = M:AddSection({
+        Name = "BOOTS"
+    })
+
+    M:AddButton({
+        Name = "BOOST FPS",
+        Callback = function()
+            pcall(function()
+                game:GetService("Lighting").FantasySky:Destroy()
+                local g = game
+                local w = g.Workspace
+                local l = g.Lighting
+                local t = w.Terrain
+                t.WaterWaveSize = 0
+                t.WaterWaveSpeed = 0
+                t.WaterReflectance = 0
+                t.WaterTransparency = 0
+                l.GlobalShadows = false
+                l.FogEnd = 9e9
+                l.Brightness = 0
+                settings().Rendering.QualityLevel = "Level01"
+                for i, v in pairs(g:GetDescendants()) do
+                    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
+                        v.Material = "Plastic"
+                        v.Reflectance = 0
+                    elseif v:IsA("Decal") or v:IsA("Texture") then
+                        v.Transparency = 1
+                    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                        v.Lifetime = NumberRange.new(0)
+                    elseif v:IsA("Explosion") then
+                        v.BlastPressure = 1
+                        v.BlastRadius = 1
+                    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                        v.Enabled = false
+                    elseif v:IsA("MeshPart") then
+                        v.Material = "Plastic"
+                        v.Reflectance = 0
+                        v.TextureID = 10385902758728957
+                    end
+                end
+                for i, e in pairs(l:GetChildren()) do
+                    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                        e.Enabled = false
+                    end
+                end
+                for i, v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
+                    if v.Name == ("Water;") then
+                        v.Transparency = 1
+                        v.Material = "Plastic"
+                    end
+                end
+            end)
+          end    
+    })
+end
+
+    local Section = M:AddSection({
+        Name = "Other Farm"
+    })
+
+    M:AddParagraph("Redeem Code","Click to Button to Reddem All Code In Blox Fruits.")
+
+    local x2Code = {
+        "JULYUPDATE_RESET",
+        "staffbattle",
+        "Sub2CaptainMaui",
+        "SUB2GAMERROBOT_RESET1",
+        "KittGaming",
+        "Sub2Fer999",
+        "Enyu_is_Pro",
+        "Magicbus",
+        "ENYU_IS_PRO",
+        "FUDD10",
+        "BIGNEWS",
+        "THEGREATACE",
+        "SUB2GAMERROBOT_EXP1",
+        "STRAWHATMAIME",
+        "SUB2OFFICIALNOOBIE",
+        "SUB2NOOBMASTER123",
+        "SUB2DAIGROCK",
+        "AXIORE",
+        "TANTAIGAMIMG",
+        "STRAWHATMAINE",
+        "JCWK",
+        "FUDD10_V2",
+        "SUB2FER999",
+        "MAGICBIS",
+        "TY_FOR_WATCHING",
+        "STARCODEHEO"
+    }
+    
+    
+    
+    M:AddButton({
+        Name = "Redeem all code",
+        Callback = function()
+            function RedeemCode(value)
+                game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
+            end
+            for i,v in pairs(x2Code) do
+                RedeemCode(v)
+            end
+          end    
+    })
+
+    local Section = M:AddSection({
+        Name = "Auto Farm Level"
+    })
+
+
+M:AddParagraph("Main Farm","Click to Box to Farm, I ready update new mob farm!.")
+
+ToggleFarm = M:AddToggle({
+    Name = "Auto Farm",
+    Default = false,
+    Flag = "LevelFarm",
+    Save = true,
+    Callback = function(Value)
+        _G.AutoFarm = Value
+        StopTween(_G.AutoFarm)
+    end    
+})
+
+local Section = M:AddSection({
+    Name = "Mastery Menu"
+})
+
+M:AddParagraph("Mastery Menu","Click To Box to Start Farm Mastery")
+
+M:AddToggle({
+    Name = "Auto Farm BF Mastery",
+    Default = false,
+    Flag = "Mastery",
+    Save = true,
+    Callback = function(Value)
+        _G.AutoFarmFruitMastery = Value
+        StopTween(_G.AutoFarmFruitMastery)
+        if _G.AutoFarmFruitMastery == false then
+            UseSkill = false 
+        end
+    end    
+})
+
+M:AddToggle({
+    Name = "Auto Farm Gun Mastery",
+    Default = false,
+    Flag = "Gun Mastery",
+    Save = true,
+    Callback = function(Value)
+        _G.AutoFarmGunMastery = Value
+        StopTween(_G.AutoFarmGunMastery)
+    end    
+})
+
+    M:AddSlider({
+        Name = "Health Mob",
+        Min = 0,
+        Max = 100,
+        Default = 25,
+        Color = Color3.fromRGB(255,255,255),
+        Increment = 1,
+        ValueName = "Health",
+        Flag = "Health Mob",
+        Save = true,
+        Callback = function(Value)
+            _G.Kill_At = Value
+        end    
+    })
+
+    M:AddToggle({
+        Name = "Skill Z",
+        Default = false,
+        Flag = "Skill Z",
+        Save = true,
+        Callback = function(Value)
+            _G.SkillZ = Value
+        end    
+    })
+
+    M:AddToggle({
+        Name = "Skill! X",
+        Default = false,
+        Default = false,
+        Flag = "Skill X",
+        Save = true,
+        Callback = function(Value)
+            _G.SkillX = Value
+        end    
+    })
+
+
+    M:AddToggle({
+        Name = "Skill C",
+        Default = false,
+        Default = false,
+        Flag = "Skill C",
+        Save = true,
+        Callback = function(Value)
+            _G.SkillC = Value
+        end    
+    })
+
+
+    M:AddToggle({
+        Name = "Skill V",
+        Default = false,
+        Default = false,
+        Flag = "Skill V",
+        Save = true,
+        Callback = function(Value)
+            _G.SkillV = Value
+        end    
+    })
+
+    M:AddToggle({
+        Name = "Skill F",
+        Default = false,
+        Default = false,
+        Flag = "Skill F",
+        Save = true,
+        Callback = function(Value)
+            _G.SkillF = Value
+        end    
+    })
+
+    local Section = M:AddSection({
+        Name = "Bring Mob"
+    })
+
+M:AddToggle({
+    Name = "Bring Mobs[Fix]",
+    Default = true,
+    Flag = "Bring Mobs",
+    Save = false,
+    Callback = function(Value)
+        _G.BringMonster = Value
+    end    
+})
+local Bring = {"Low", "Normal", "Super Bring"}
+_G.BringMode = "Normal"
+M:AddDropdown({
+    Name = "Bring Mode",
+    Default = "Normal",
+    Options = Bring,
+    Default = false,
+    Flag = "Bring Mode",
+    Save = true,
+    Callback = function(Value)
+        _G.BringMode = Value
+    end    
+})
+spawn(function()
+    while wait(.1) do
+        if _G.BringMode then
+            pcall(function()
+                if _G.BringMode == "Low" then
+                    _G.BringMode = 300
+                elseif _G.BringMode == "Normal" then
+                    _G.BringMode = 375
+                elseif _G.BringMode == "Super Bring" then
+                    _G.BringMode = 450
+             
+OrionLib:Init()
